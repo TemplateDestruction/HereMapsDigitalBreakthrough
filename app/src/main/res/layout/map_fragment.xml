@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="48dp" android:id="@+id/btn_calc"
+            android:onClick="onCalcClick"
+            android:text="РАССЧИТАТЬ МАРШРУТ"/>
+    <!-- Map Fragment embedded with the map object -->
+    <fragment
+            class="com.here.android.mpa.mapping.SupportMapFragment"
+            android:id="@+id/mapfragment"
+            android:layout_width="match_parent"
+            android:layout_height="669dp"/>
+
+
+
+</LinearLayout>
