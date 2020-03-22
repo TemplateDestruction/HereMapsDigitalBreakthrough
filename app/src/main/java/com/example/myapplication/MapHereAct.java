@@ -69,19 +69,19 @@ public class MapHereAct extends AppCompatActivity {
                     map.setCenter(new GeoCoordinate(59.9690552, 30.3151436), Map.Animation.NONE);
                     map.setZoomLevel(map.getMaxZoomLevel() - 6);
 
-                    Image image = null;
-
-                    try {
-                        image = new Image();
-                        image.setImageResource(R.drawable.vertica);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    MapMarker mapMarker = new MapMarker(basePoint, image);
-                    MapMarker mapMarker1 = new MapMarker(new GeoCoordinate(59.968864, 30.311801
-                    ), image);
-                    MapMarker mapMarker2 = new MapMarker(new GeoCoordinate(59.973213, 30.319788), image);
+//                    Image image = null;
+//
+//                    try {
+//                        image = new Image();
+//                        image.setImageResource(R.drawable.vertica);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    MapMarker mapMarker = new MapMarker(basePoint, image);
+//                    MapMarker mapMarker1 = new MapMarker(new GeoCoordinate(59.968864, 30.311801
+//                    ), image);
+//                    MapMarker mapMarker2 = new MapMarker(new GeoCoordinate(59.973213, 30.319788), image);
 
 
                     //
@@ -256,7 +256,7 @@ public class MapHereAct extends AppCompatActivity {
                 button.setText("ЗАВЕРШИТЬ");
                 break;
             case "ЗАВЕРШИТЬ":
-                onBackPressed();
+                finish();
                 break;
             case "ДОП.ПОГРУЗКА 1 ЗАВЕРШЕНА":
                 button.setText("ДОП.ПОГРУЗКА 2 ЗАВЕРШЕНА");
@@ -267,11 +267,16 @@ public class MapHereAct extends AppCompatActivity {
                 for (int i = 0; i < routes.size() - 1; i++) {
                     MapRoute route1 = routes.get(i);
                     map.removeMapObject(route1);
-                    map.setZoomLevel(map.getMaxZoomLevel() - 4, Map.Animation.LINEAR);
+                    map.setZoomLevel(map.getMaxZoomLevel() - 6, Map.Animation.LINEAR);
                 }
                 button.setText("НАЧАТЬ");
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private class RouteListener implements RouteManager.Listener {
@@ -293,6 +298,7 @@ public class MapHereAct extends AppCompatActivity {
                 mapRoute.setColor(getRandomColor());
                 map.addMapObject(mapRoute);
             } else {
+                dialog.hideLoadingIndicator();
 
                 // Display a message indicating route calculation failure
             }
